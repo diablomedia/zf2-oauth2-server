@@ -45,8 +45,7 @@ class AuthorizeController extends AbstractActionController
         }
 
         if (!$server->validateAuthorizeRequest($request, $response)) {
-            echo json_encode($response->getContent());
-            exit;
+            return new JsonModel($response->getContent());
         }
 
         $form->setData($request->getQuery());
@@ -65,8 +64,7 @@ class AuthorizeController extends AbstractActionController
         $request = Request::createFromRequest($this->getRequest());
         $response = $server->handleTokenRequest($request, $this->getResponse());
 
-        $view = new JsonModel($response->getContent());
-        return $view;
+        return new JsonModel($response->getContent());
     }
 
     public function setUserId($userId)

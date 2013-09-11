@@ -44,15 +44,6 @@ return array(
     'oauth2server' => array(
         'storage_class' => '\OAuth2\Storage\Memory',
         'authorize_form_class' => '\OAuth2Server\Form\AuthorizeForm',
-        'server_config' => array(
-            //'access_lifetime'          => 3600,
-            //'www_realm'                => 'Service',
-            //'token_param_name'         => 'access_token',
-            //'token_bearer_header_name' => 'Bearer',
-            //'enforce_state'            => true,
-            //'require_exact_redirect_uri' => true,
-            //'allow_implicit'           => false,
-            //'allow_credentials_in_request_body' => true,
-        ),
+        'server_config' => array(),
     ),
 );

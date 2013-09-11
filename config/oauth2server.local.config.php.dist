@@ -1,0 +1,6 @@
+return array(
+    'oauth2server' => array(
+        // A random salt to use for CSRF tokens
+        'csrf_salt' => 'unique per application'
+    )
+);

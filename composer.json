@@ -1,0 +1,25 @@
+{
+    "name": "diablomedia/zf2-oauth2-server",
+    "description": "ZF2 implementation of oauth2-server-php",
+    "keywords": ["oauth", "oauth2", "auth", "zf2", "zendframework"],
+    "type": "library",
+    "license": "MIT",
+    "authors":[
+        {
+            "name": "Ari Pringle",
+            "email": "ari@diablomedia.com",
+            "homepage": "http://diablomedia.com/"
+        }
+    ],
+    "homepage": "http://github.com/diablomedia/oauth2-server-zendhttp-bridge",
+    "require": {
+        "php": ">=5.3.0",
+        "diablomedia/oauth2-server-zendhttp-bridge": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"OAuth2Server": "src/"},
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}

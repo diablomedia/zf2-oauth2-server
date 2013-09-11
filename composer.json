@@ -17,6 +17,9 @@
         "diablomedia/oauth2-server-zendhttp-bridge": "dev-master"
     },
     "autoload": {
-        "psr-0": {"OAuth2Server": "src/"}
+        "psr-0": {"OAuth2Server": "src/"},
+        "classmap": [
+            "./Module.php"
+        ]
     }
 }

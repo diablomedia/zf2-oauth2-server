@@ -19,22 +19,7 @@ class Module implements AutoloaderProviderInterface
 {
     public function getAutoloaderConfig()
     {
-        // This is to be able to load the models
-        set_include_path(
-            implode(
-                PATH_SEPARATOR,
-                array(
-                    getenv('ADTRACKER_MODEL_PATH'),
-                    getenv('ADTRACKER_MODEL_PATH') . '/generated',
-                    get_include_path(),
-                )
-            )
-        );
-
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/autoload_classmap.php',
-            ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     // if we're in a namespace deeper than one level we need to fix the \ in the path

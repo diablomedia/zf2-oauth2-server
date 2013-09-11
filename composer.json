@@ -17,6 +17,6 @@
         "diablomedia/oauth2-server-zendhttp-bridge": "*"
     },
     "autoload": {
-        "psr-0": {"OAuth2\ZendHttpPhpEnvironmentBridge": "src/"}
+        "psr-0": {"OAuth2\\ZendHttpPhpEnvironmentBridge": "src/"}
     }
 }

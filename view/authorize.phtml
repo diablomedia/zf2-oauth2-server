@@ -1,0 +1,16 @@
+<?php
+$title = 'Authorize Application?';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->prepare();
+?>
+
+<p>The application <strong><?php echo $this->escapeHtml($appname) ?></strong> wants access to your account.</p>
+
+<p>Allow access to <strong><?php echo $this->escapeHtml($appname)?></strong>?</p>
+
+<?php
+$this->form->prepare();
+echo $this->form()->render($this->form);

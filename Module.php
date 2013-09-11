@@ -13,6 +13,8 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+use OAuth2\ZendHttpPhpEnvironmentBridge\Response;
+
 class Module implements AutoloaderProviderInterface
 {
     public function getAutoloaderConfig()
@@ -48,8 +50,7 @@ class Module implements AutoloaderProviderInterface
             'factories' => array(
                 // Override Response factory
                 'Response' => function ($serviceManager) {
-                    $response = new OAuth2\ZendHttpPhpEnvironmentBridge\Response();
-                    return $response;
+                    return new Response();
                 },
                 'OAuth2Server\Server' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');

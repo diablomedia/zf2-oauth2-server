@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\View\Helper\ServerUrl;
-use OAuth2Server\OAuth2\ZendHttpPhpEnvironmentBridge\Request;
+use OAuth2\ZendHttpPhpEnvironmentBridge\Request;
 use OAuth2\GrantType\UserCredentials;
 
 class AuthorizeController extends AbstractActionController

@@ -46,15 +46,18 @@ class Module implements AutoloaderProviderInterface
                         $serviceManager->get('OAuth2Server\Storage'),
                         $config['oauth2server']['server_config']
                     );
+
                     return $server;
                 },
                 'OAuth2Server\Storage' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
+
                     return new $config['oauth2server']['storage_class']();
                 },
                 'OAuth2Server\AuthorizeForm' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
                     $form = new $config['oauth2server']['authorize_form_class']('Authorize', $config['oauth2server']['csrf_salt']);
+
                     return $form;
                 }
             )

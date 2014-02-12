@@ -55,8 +55,6 @@ class AuthorizeController extends AbstractActionController
     public function tokenAction()
     {
         $server = $this->getServiceLocator()->get('OAuth2Server\Server');
-        $config = $this->getServiceLocator()->get('config')['oauth2server'];
-
         $request = Request::createFromRequest($this->getRequest());
         $response = $server->handleTokenRequest($request, $this->getResponse());
 

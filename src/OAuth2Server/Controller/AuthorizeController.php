@@ -41,6 +41,12 @@ class AuthorizeController extends AbstractActionController
         }
 
         if (!$server->validateAuthorizeRequest($request, $response)) {
+            $headers = $response->getHeaders();
+            $location = $headers->get('location');
+            if ($location)
+            {
+                $headers->removeHeader($location);
+            }
             return new JsonModel($response->getContent());
         }
 

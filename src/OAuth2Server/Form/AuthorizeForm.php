@@ -59,6 +59,7 @@ class AuthorizeForm extends Form
                 'name' => 'authorize',
                 'attributes' => array(
                     'type'  => 'submit',
+                    'class' => 'btn btn-primary',
                     'value' => 'Authorize',
                 ),
             )
@@ -69,6 +70,7 @@ class AuthorizeForm extends Form
                 'name' => 'deny',
                 'attributes' => array(
                     'type'  => 'submit',
+                    'class' => 'btn btn-danger',
                     'value' => 'Deny',
                 ),
             )

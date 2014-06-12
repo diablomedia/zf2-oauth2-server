@@ -31,20 +31,18 @@ class AuthorizeController extends AbstractActionController
                     $isAuthorized = false;
             }
         }
-
         if (isset($isAuthorized)) {
             $this->getEventManager()->trigger('authorize.preHandle', $this, array('isAuthorized' => $isAuthorized, 'preAuthorized' => $this->preAuthorized));
 
             $response = $server->handleAuthorizeRequest($request, $this->getResponse(), $isAuthorized, $this->userId);
             $response->sendHeaders();
-            exit;
+            return new JsonModel($response->getContent());
         }
 
         if (!$server->validateAuthorizeRequest($request, $response)) {
             $headers = $response->getHeaders();
             $location = $headers->get('location');
-            if ($location)
-            {
+            if ($location) {
                 $headers->removeHeader($location);
             }
             return new JsonModel($response->getContent());

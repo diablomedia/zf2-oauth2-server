@@ -26,13 +26,13 @@ class AuthorizeController extends AbstractActionController
             $form = $serviceManager->get('OAuth2Server\AuthorizeForm');
             $form->setData($request->getQuery());
             if ($request->getQuery('authorize') && $form->isValid()) {
-                    $isAuthorized = true;
+                $isAuthorized = true;
             } elseif ($request->getQuery('deny') && $form->isValid()) {
-                    $isAuthorized = false;
+                $isAuthorized = false;
             }
         }
         if (isset($isAuthorized)) {
-            $this->getEventManager()->trigger('authorize.preHandle', $this, array('isAuthorized' => $isAuthorized, 'preAuthorized' => $this->preAuthorized));
+            $this->getEventManager()->trigger('authorize.preHandle', $this, ['isAuthorized' => $isAuthorized, 'preAuthorized' => $this->preAuthorized]);
 
             $response = $server->handleAuthorizeRequest($request, $this->getResponse(), $isAuthorized, $this->userId);
             $response->sendHeaders();
@@ -53,7 +53,7 @@ class AuthorizeController extends AbstractActionController
 
         $this->getEventManager()->trigger('authorize.post', $this);
 
-        return array('form' => $form, 'appname' => $client['name']);
+        return ['form' => $form, 'appname' => $client['name']];
     }
 
     public function tokenAction()

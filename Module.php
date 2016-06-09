@@ -1,43 +1,36 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonModule for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace OAuth2Server;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-
+use Zend\ServiceManager\ServiceManager;
 use OAuth2\ZendHttpPhpEnvironmentBridge\Response;
 
 class Module implements AutoloaderProviderInterface
 {
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     // if we're in a namespace deeper than one level we need to fix the \ in the path
                     __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/', __NAMESPACE__),
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     public function getServiceConfig()
     {
-        return array(
-            'factories' => array(
+        return [
+            'factories' => [
                 // Override Response factory
-                'Response' => function ($serviceManager) {
+                'Response' => function (ServiceManager $serviceManager) {
                     return new Response();
                 },
-                'OAuth2Server\Server' => function ($serviceManager) {
+                'OAuth2Server\Server' => function (ServiceManager $serviceManager) {
                     $config = $serviceManager->get('Config');
                     // The grant types and response types will automatically
                     // be determined based on the interfaces implemented in
@@ -49,19 +42,22 @@ class Module implements AutoloaderProviderInterface
 
                     return $server;
                 },
-                'OAuth2Server\Storage' => function ($serviceManager) {
+                'OAuth2Server\Storage' => function (ServiceManager $serviceManager) {
                     $config = $serviceManager->get('Config');
 
                     return new $config['oauth2server']['storage_class']();
                 },
-                'OAuth2Server\AuthorizeForm' => function ($serviceManager) {
+                'OAuth2Server\AuthorizeForm' => function (ServiceManager $serviceManager) {
                     $config = $serviceManager->get('Config');
-                    $form = new $config['oauth2server']['authorize_form_class']('Authorize', $config['oauth2server']['csrf_salt']);
+                    $form = new $config['oauth2server']['authorize_form_class'](
+                        'Authorize',
+                        $config['oauth2server']['csrf_salt']
+                    );
 
                     return $form;
                 }
-            )
-        );
+            ]
+        ];
     }
 
     public function getConfig()

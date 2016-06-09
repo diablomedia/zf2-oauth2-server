@@ -1,49 +1,49 @@
 <?php
-return array(
-    'controllers' => array(
-        'invokables' => array(
+return [
+    'controllers' => [
+        'invokables' => [
             'OAuth2Server\Controller\Authorize' => 'OAuth2Server\Controller\AuthorizeController'
-        )
-    ),
-    'router' => array(
-        'routes' => array(
-            'oauth_auth' => array(
+        ]
+    ],
+    'router' => [
+        'routes' => [
+            'oauth_auth' => [
                 'type'    => 'literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/oauth',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'OAuth2Server\Controller',
                         'controller'    => 'Authorize',
                         'action'        => 'authorize'
-                    )
-                ),
+                    ]
+                ],
                 'may_terminate' => true,
-            ),
-            'oauth_token' => array(
+            ],
+            'oauth_token' => [
                 'type'    => 'literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/oauth/token',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'OAuth2Server\Controller',
                         'controller'    => 'Authorize',
                         'action'        => 'token'
-                    )
-                ),
+                    ]
+                ],
                 'may_terminate' => true,
-            )
-        )
-    ),
-    'view_manager' => array(
-        'strategies' => array(
+            ]
+        ]
+    ],
+    'view_manager' => [
+        'strategies' => [
             'ViewJsonStrategy'
-        ),
-        'template_map' => array(
+        ],
+        'template_map' => [
             'o-auth2-server/authorize/authorize' => __DIR__ . '/../view/authorize.phtml'
-        ),
-    ),
-    'oauth2server' => array(
+        ],
+    ],
+    'oauth2server' => [
         'storage_class' => '\OAuth2\Storage\Memory',
         'authorize_form_class' => '\OAuth2Server\Form\AuthorizeForm',
-        'server_config' => array(),
-    ),
-);
+        'server_config' => [],
+    ],
+];

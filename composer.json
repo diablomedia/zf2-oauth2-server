@@ -8,12 +8,17 @@
         {
             "name": "Ari Pringle",
             "email": "ari@diablomedia.com",
-            "homepage": "http://diablomedia.com/"
+            "homepage": "https://diablomedia.com/"
+        },
+        {
+            "name": "Jay Klehr",
+            "email": "jay@diablomedia.com",
+            "homepage": "https://diablomedia.com/"
         }
     ],
     "homepage": "http://github.com/diablomedia/zf2-oauth2-server",
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.5.0",
         "diablomedia/oauth2-server-zendhttp-bridge": "^1.0.0"
     },
     "autoload": {
@@ -21,5 +26,9 @@
         "classmap": [
             "./Module.php"
         ]
+    },
+    "require-dev": {
+        "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+        "friendsofphp/php-cs-fixer": "^1.11"
     }
 }

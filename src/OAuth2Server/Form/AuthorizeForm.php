@@ -11,69 +11,69 @@ class AuthorizeForm extends Form
         parent::__construct($name);
 
         $this->add(
-            new Element\Csrf('security', array('salt' => $csrfSalt))
+            new Element\Csrf('security', ['salt' => $csrfSalt])
         );
 
         $this->add(
-            array(
+            [
                 'name' => 'client_id',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'hidden'
-                )
-            )
+                ]
+            ]
         );
         $this->add(
-            array(
+            [
                 'name' => 'redirect_uri',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'hidden'
-                )
-            )
+                ]
+            ]
         );
         $this->add(
-            array(
+            [
                 'name' => 'response_type',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'hidden'
-                )
-            )
+                ]
+            ]
         );
         $this->add(
-            array(
+            [
                 'name' => 'state',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'hidden'
-                )
-            )
+                ]
+            ]
         );
         $this->add(
-            array(
+            [
                 'name' => 'scope',
-                'attributes' => array(
+                'attributes' => [
                     'type' => 'hidden'
-                )
-            )
+                ]
+            ]
         );
         $this->add(
-            array(
+            [
                 'name' => 'authorize',
-                'attributes' => array(
+                'attributes' => [
                     'type'  => 'submit',
                     'class' => 'btn btn-primary',
                     'value' => 'Authorize',
-                ),
-            )
+                ],
+            ]
         );
 
         $this->add(
-            array(
+            [
                 'name' => 'deny',
-                'attributes' => array(
+                'attributes' => [
                     'type'  => 'submit',
                     'class' => 'btn btn-danger',
                     'value' => 'Deny',
-                ),
-            )
+                ],
+            ]
         );
 
         $this->setAttribute('method', 'get'); // The bshaffer library currently does not allow POST here

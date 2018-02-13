@@ -1,9 +1,10 @@
 <?php
+
 return [
     'controllers' => [
-        'invokables' => [
-            'OAuth2Server\Controller\Authorize' => 'OAuth2Server\Controller\AuthorizeController'
-        ]
+        'factories' => [
+            'OAuth2Server\Controller\Authorize' => OAuth2Server\Controller\Factory\AuthorizeControllerFactory::class,
+        ],
     ],
     'router' => [
         'routes' => [

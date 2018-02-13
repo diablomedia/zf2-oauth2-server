@@ -19,6 +19,7 @@
     "homepage": "https://github.com/diablomedia/zf2-oauth2-server",
     "require": {
         "php": ">=5.6.0",
+        "bshaffer/oauth2-server-php": "^1.7",
         "diablomedia/oauth2-server-zendhttp-bridge": "^2.0.0",
         "zendframework/zend-form": "^2.0.0",
         "zendframework/zend-view": "^2.0.0",

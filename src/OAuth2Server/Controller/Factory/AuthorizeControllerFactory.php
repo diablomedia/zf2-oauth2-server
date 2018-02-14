@@ -14,7 +14,8 @@ class AuthorizeControllerFactory implements FactoryInterface
         return $this($serviceLocator->getServiceLocator(), AuthorizeController::class);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null) {
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
         return new AuthorizeController(
             $container->get('OAuth2Server\Server'),
             $container->get('OAuth2Server\AuthorizeForm')

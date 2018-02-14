@@ -32,8 +32,12 @@
         ]
     },
     "require-dev": {
-        "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-        "friendsofphp/php-cs-fixer": "^1.11",
+        "friendsofphp/php-cs-fixer": "^2.0",
         "phpstan/phpstan": "^0.9.2"
+    },
+    "scripts": {
+        "fix-style": "php-cs-fixer fix",
+        "check-style": "php-cs-fixer fix --dry-run -vv",
+        "check-stan": "phpstan analyse -l 7 --autoload-file=vendor/autoload.php --memory-limit=768M src"
     }
 }

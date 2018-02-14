@@ -43,8 +43,8 @@ return [
         ],
     ],
     'oauth2server' => [
-        'storage_class' => '\OAuth2\Storage\Memory',
+        'storage_class'        => '\OAuth2\Storage\Memory',
         'authorize_form_class' => '\OAuth2Server\Form\AuthorizeForm',
-        'server_config' => [],
+        'server_config'        => [],
     ],
 ];

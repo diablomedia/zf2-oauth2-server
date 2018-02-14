@@ -16,7 +16,7 @@ class AuthorizeForm extends Form
 
         $this->add(
             [
-                'name' => 'client_id',
+                'name'       => 'client_id',
                 'attributes' => [
                     'type' => 'hidden'
                 ]
@@ -24,7 +24,7 @@ class AuthorizeForm extends Form
         );
         $this->add(
             [
-                'name' => 'redirect_uri',
+                'name'       => 'redirect_uri',
                 'attributes' => [
                     'type' => 'hidden'
                 ]
@@ -32,7 +32,7 @@ class AuthorizeForm extends Form
         );
         $this->add(
             [
-                'name' => 'response_type',
+                'name'       => 'response_type',
                 'attributes' => [
                     'type' => 'hidden'
                 ]
@@ -40,7 +40,7 @@ class AuthorizeForm extends Form
         );
         $this->add(
             [
-                'name' => 'state',
+                'name'       => 'state',
                 'attributes' => [
                     'type' => 'hidden'
                 ]
@@ -48,7 +48,7 @@ class AuthorizeForm extends Form
         );
         $this->add(
             [
-                'name' => 'scope',
+                'name'       => 'scope',
                 'attributes' => [
                     'type' => 'hidden'
                 ]
@@ -56,7 +56,7 @@ class AuthorizeForm extends Form
         );
         $this->add(
             [
-                'name' => 'authorize',
+                'name'       => 'authorize',
                 'attributes' => [
                     'type'  => 'submit',
                     'class' => 'btn btn-primary',
@@ -67,7 +67,7 @@ class AuthorizeForm extends Form
 
         $this->add(
             [
-                'name' => 'deny',
+                'name'       => 'deny',
                 'attributes' => [
                     'type'  => 'submit',
                     'class' => 'btn btn-danger',

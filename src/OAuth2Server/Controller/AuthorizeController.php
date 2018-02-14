@@ -17,7 +17,7 @@ class AuthorizeController extends AbstractActionController
 
     public function __construct(Server $server, $authorizeForm)
     {
-        $this->server = $server;
+        $this->server        = $server;
         $this->authorizeForm = $authorizeForm;
     }
 
@@ -25,7 +25,7 @@ class AuthorizeController extends AbstractActionController
     {
         $this->getEventManager()->trigger('authorize.pre', $this);
 
-        $request = Request::createFromRequest($this->getRequest());
+        $request  = Request::createFromRequest($this->getRequest());
         $response = $this->getResponse();
 
         if ($this->preAuthorized) {
@@ -56,7 +56,7 @@ class AuthorizeController extends AbstractActionController
         }
 
         if (!$this->server->validateAuthorizeRequest($request, $response)) {
-            $headers = $response->getHeaders();
+            $headers  = $response->getHeaders();
             $location = $headers->get('location');
             if ($location) {
                 $headers->removeHeader($location);
@@ -74,7 +74,7 @@ class AuthorizeController extends AbstractActionController
 
     public function tokenAction()
     {
-        $request = Request::createFromRequest($this->getRequest());
+        $request  = Request::createFromRequest($this->getRequest());
         $response = $this->server->handleTokenRequest($request, $this->getResponse());
 
         return new JsonModel($response->getContent());

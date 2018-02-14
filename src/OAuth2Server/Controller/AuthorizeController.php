@@ -5,42 +5,58 @@ namespace OAuth2Server\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 use OAuth2\ZendHttpPhpEnvironmentBridge\Request;
+use OAuth2\Server;
 
 class AuthorizeController extends AbstractActionController
 {
     protected $userId;
     protected $preAuthorized = false;
 
+    private $server;
+    private $authorizeForm;
+
+    public function __construct(Server $server, $authorizeForm)
+    {
+        $this->server        = $server;
+        $this->authorizeForm = $authorizeForm;
+    }
+
     public function authorizeAction()
     {
         $this->getEventManager()->trigger('authorize.pre', $this);
 
-        $serviceManager = $this->getServiceLocator();
-        $request = Request::createFromRequest($this->getRequest());
+        $request  = Request::createFromRequest($this->getRequest());
         $response = $this->getResponse();
-        $server = $serviceManager->get('OAuth2Server\Server');
 
         if ($this->preAuthorized) {
             $isAuthorized = true;
         } else {
-            $form = $serviceManager->get('OAuth2Server\AuthorizeForm');
-            $form->setData($request->getQuery());
-            if ($request->getQuery('authorize') && $form->isValid()) {
+            $this->authorizeForm->setData($request->getQuery());
+            if ($request->getQuery('authorize') && $this->authorizeForm->isValid()) {
                 $isAuthorized = true;
-            } elseif ($request->getQuery('deny') && $form->isValid()) {
+            } elseif ($request->getQuery('deny') && $this->authorizeForm->isValid()) {
                 $isAuthorized = false;
             }
         }
         if (isset($isAuthorized)) {
-            $this->getEventManager()->trigger('authorize.preHandle', $this, ['isAuthorized' => $isAuthorized, 'preAuthorized' => $this->preAuthorized]);
+            $this->getEventManager()->trigger(
+                'authorize.preHandle',
+                $this,
+                ['isAuthorized' => $isAuthorized, 'preAuthorized' => $this->preAuthorized]
+            );
 
-            $response = $server->handleAuthorizeRequest($request, $this->getResponse(), $isAuthorized, $this->userId);
+            $response = $this->server->handleAuthorizeRequest(
+                $request,
+                $this->getResponse(),
+                $isAuthorized,
+                $this->userId
+            );
             $response->sendHeaders();
             return new JsonModel($response->getContent());
         }
 
-        if (!$server->validateAuthorizeRequest($request, $response)) {
-            $headers = $response->getHeaders();
+        if (!$this->server->validateAuthorizeRequest($request, $response)) {
+            $headers  = $response->getHeaders();
             $location = $headers->get('location');
             if ($location) {
                 $headers->removeHeader($location);
@@ -48,19 +64,18 @@ class AuthorizeController extends AbstractActionController
             return new JsonModel($response->getContent());
         }
 
-        $form->setData($request->getQuery());
-        $client = $server->getStorage('client')->getClientDetails($request->getQuery('client_id'));
+        $this->authorizeForm->setData($request->getQuery());
+        $client = $this->server->getStorage('client')->getClientDetails($request->getQuery('client_id'));
 
         $this->getEventManager()->trigger('authorize.post', $this);
 
-        return ['form' => $form, 'appname' => $client['name']];
+        return ['form' => $this->authorizeForm, 'appname' => $client['name']];
     }
 
     public function tokenAction()
     {
-        $server = $this->getServiceLocator()->get('OAuth2Server\Server');
-        $request = Request::createFromRequest($this->getRequest());
-        $response = $server->handleTokenRequest($request, $this->getResponse());
+        $request  = Request::createFromRequest($this->getRequest());
+        $response = $this->server->handleTokenRequest($request, $this->getResponse());
 
         return new JsonModel($response->getContent());
     }

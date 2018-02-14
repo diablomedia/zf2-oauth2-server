@@ -1,6 +1,7 @@
 zf2-oauth2-server
 =================
 
+[![Build Status](https://travis-ci.org/diablomedia/zf2-oauth2-server.svg?branch=master)](https://travis-ci.org/diablomedia/zf2-oauth2-server)
 [![Latest Stable Version](https://poser.pugx.org/diablomedia/zf2-oauth2-server/v/stable)](https://packagist.org/packages/diablomedia/zf2-oauth2-server)
 [![Total Downloads](https://poser.pugx.org/diablomedia/zf2-oauth2-server/downloads)](https://packagist.org/packages/diablomedia/zf2-oauth2-server)
 [![License](https://poser.pugx.org/diablomedia/zf2-oauth2-server/license)](https://packagist.org/packages/diablomedia/zf2-oauth2-server)

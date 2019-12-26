@@ -1,0 +1,11 @@
+includes:
+    - ./phpstan-baseline.neon
+parameters:
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
+    level: 8
+    paths:
+        - ./
+    excludes_analyse:
+        - ./vendor/*
+    ignoreErrors:

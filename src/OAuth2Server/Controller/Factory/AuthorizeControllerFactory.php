@@ -11,6 +11,8 @@ class AuthorizeControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        // This only gets called in older versions of Zend\ServiceManager,
+        // left for backwards compatibility
         return $this($serviceLocator->getServiceLocator(), AuthorizeController::class);
     }
 

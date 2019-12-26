@@ -9,18 +9,38 @@ use OAuth2\Server;
 
 class AuthorizeController extends AbstractActionController
 {
+    /**
+     * @var mixed
+     */
     protected $userId;
+
+    /**
+     * @var bool
+     */
     protected $preAuthorized = false;
 
+    /**
+     * @var Server
+     */
     private $server;
+
+    /**
+     * @var \OAuth2Server\Form\AuthorizeForm
+     */
     private $authorizeForm;
 
+    /**
+     * @param \OAuth2Server\Form\AuthorizeForm $authorizeForm
+     */
     public function __construct(Server $server, $authorizeForm)
     {
         $this->server        = $server;
         $this->authorizeForm = $authorizeForm;
     }
 
+    /**
+     * @return array|JsonModel
+     */
     public function authorizeAction()
     {
         $this->getEventManager()->trigger('authorize.pre', $this);
@@ -72,6 +92,9 @@ class AuthorizeController extends AbstractActionController
         return ['form' => $this->authorizeForm, 'appname' => $client['name']];
     }
 
+    /**
+     * @return JsonModel
+     */
     public function tokenAction()
     {
         $request  = Request::createFromRequest($this->getRequest());
@@ -80,21 +103,35 @@ class AuthorizeController extends AbstractActionController
         return new JsonModel($response->getContent());
     }
 
+    /**
+     * @param mixed $userId
+     * @return void
+     */
     public function setUserId($userId)
     {
         $this->userId = $userId;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUserId()
     {
         return $this->userId;
     }
 
+    /**
+     * @param bool $val
+     * @return void
+     */
     public function setPreAuthorized($val)
     {
         $this->preAuthorized = $val;
     }
 
+    /**
+     * @return bool
+     */
     public function getPreAuthorized()
     {
         return $this->preAuthorized;

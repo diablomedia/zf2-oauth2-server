@@ -6,6 +6,10 @@ use Zend\Form\Element;
 
 class AuthorizeForm extends Form
 {
+    /**
+     * @param string $name
+     * @param string $csrfSalt
+     */
     public function __construct($name, $csrfSalt)
     {
         parent::__construct($name);

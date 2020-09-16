@@ -2,9 +2,9 @@
 
 namespace OAuth2Server\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\JsonModel;
-use OAuth2\ZendHttpPhpEnvironmentBridge\Request;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
+use OAuth2\LaminasHttpPhpEnvironmentBridge\Request;
 use OAuth2\Server;
 
 class AuthorizeController extends AbstractActionController

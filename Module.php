@@ -2,18 +2,18 @@
 
 namespace OAuth2Server;
 
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceManager;
-use OAuth2\ZendHttpPhpEnvironmentBridge\Response;
+use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
+use Laminas\Mvc\ModuleRouteListener;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceManager;
+use OAuth2\LaminasHttpPhpEnvironmentBridge\Response;
 
 class Module implements AutoloaderProviderInterface
 {
     public function getAutoloaderConfig()
     {
         return [
-            'Zend\Loader\StandardAutoloader' => [
+            'Laminas\Loader\StandardAutoloader' => [
                 'namespaces' => [
                     // if we're in a namespace deeper than one level we need to fix the \ in the path
                     __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/', __NAMESPACE__),

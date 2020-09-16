@@ -2,16 +2,16 @@
 
 namespace OAuth2Server\Controller\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\FactoryInterface;
 use OAuth2Server\Controller\AuthorizeController;
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class AuthorizeControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        // This only gets called in older versions of Zend\ServiceManager,
+        // This only gets called in older versions of Laminas\ServiceManager,
         // left for backwards compatibility
         return $this($serviceLocator->getServiceLocator(), AuthorizeController::class);
     }

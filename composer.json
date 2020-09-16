@@ -1,10 +1,17 @@
 {
     "name": "diablomedia/zf2-oauth2-server",
     "description": "ZF2 implementation of oauth2-server-php",
-    "keywords": ["oauth", "oauth2", "auth", "zf2", "zendframework"],
+    "keywords": [
+        "oauth",
+        "oauth2",
+        "auth",
+        "zf2",
+        "zendframework",
+        "laminas"
+    ],
     "type": "library",
     "license": "MIT",
-    "authors":[
+    "authors": [
         {
             "name": "Ari Pringle",
             "email": "ari@diablomedia.com",
@@ -20,13 +27,15 @@
     "require": {
         "php": ">=5.6.0",
         "bshaffer/oauth2-server-php": "^1.7",
-        "diablomedia/oauth2-server-zendhttp-bridge": "^2.0.0",
-        "zendframework/zend-form": "^2.0.0",
-        "zendframework/zend-view": "^2.0.0",
-        "zendframework/zend-mvc": "^2.0 || ^3.0"
+        "diablomedia/oauth2-server-zendhttp-bridge": "^3.0.0",
+        "laminas/laminas-form": "^2.0.0",
+        "laminas/laminas-view": "^2.0.0",
+        "laminas/laminas-mvc": "^2.0 || ^3.0"
     },
     "autoload": {
-        "psr-0": {"OAuth2Server": "src/"},
+        "psr-0": {
+            "OAuth2Server": "src/"
+        },
         "classmap": [
             "./Module.php"
         ]

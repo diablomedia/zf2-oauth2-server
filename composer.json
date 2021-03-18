@@ -25,7 +25,7 @@
     ],
     "homepage": "https://github.com/diablomedia/zf2-oauth2-server",
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.3 || ^8.0",
         "bshaffer/oauth2-server-php": "^1.10",
         "diablomedia/oauth2-server-zendhttp-bridge": "^3.0.0",
         "laminas/laminas-form": "^2.0.0",

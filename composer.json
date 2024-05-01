@@ -56,7 +56,8 @@
     },
     "config": {
         "allow-plugins": {
-            "phpro/grumphp-shim": true
+            "phpro/grumphp-shim": true,
+            "ocramius/package-versions": true
         }
     }
 }

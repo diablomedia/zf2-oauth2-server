@@ -52,7 +52,7 @@ class Module implements AutoloaderProviderInterface
                 },
                 'OAuth2Server\AuthorizeForm' => function (ServiceManager $serviceManager) {
                     $config = $serviceManager->get('Config');
-                    $form = new $config['oauth2server']['authorize_form_class'](
+                    $form   = new $config['oauth2server']['authorize_form_class'](
                         'Authorize',
                         $config['oauth2server']['csrf_salt']
                     );

@@ -39,9 +39,3 @@ parameters:
 			message: "#^Parameter \\#2 \\$response of method OAuth2\\\\Server\\:\\:handleTokenRequest\\(\\) expects OAuth2\\\\ResponseInterface\\|null, Laminas\\\\Stdlib\\\\ResponseInterface given\\.$#"
 			count: 1
 			path: src/OAuth2Server/Controller/AuthorizeController.php
-
-		-
-			message: "#^Call to an undefined method Laminas\\\\ServiceManager\\\\ServiceLocatorInterface\\:\\:getServiceLocator\\(\\)\\.$#"
-			count: 1
-			path: src/OAuth2Server/Controller/Factory/AuthorizeControllerFactory.php
-

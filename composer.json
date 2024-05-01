@@ -25,13 +25,13 @@
     ],
     "homepage": "https://github.com/diablomedia/zf2-oauth2-server",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.4 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
         "bshaffer/oauth2-server-php": "^1.10",
         "diablomedia/oauth2-server-zendhttp-bridge": "^3.0.0",
-        "laminas/laminas-form": "^2.0.0",
+        "laminas/laminas-form": "^2.0.0 || ^3.0.0",
         "laminas/laminas-view": "^2.0.0",
         "laminas/laminas-mvc": "^2.0 || ^3.0",
-        "container-interop/container-interop": "^1.2",
+        "psr/container": "^1.0 || ^2.0",
         "laminas/laminas-modulemanager": "^2.10",
         "laminas/laminas-servicemanager": "^3.6"
     },
@@ -44,8 +44,8 @@
         ]
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "2.18.4",
-        "phpstan/phpstan": "0.12.82",
+        "friendsofphp/php-cs-fixer": "3.51.0",
+        "phpstan/phpstan": "1.10.67",
         "maglnet/composer-require-checker": "^2.0 || ^3.0",
         "phpro/grumphp-shim": "^0.22.0 || ^1.1"
     },
@@ -53,5 +53,11 @@
         "fix-style": "php-cs-fixer fix",
         "check-style": "php-cs-fixer fix --dry-run -vv",
         "phpstan": "phpstan analyze -c phpstan.neon --no-progress --ansi"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp-shim": true,
+            "ocramius/package-versions": true
+        }
     }
 }

@@ -44,7 +44,7 @@
         ]
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "3.56.0",
+        "friendsofphp/php-cs-fixer": "3.58.0",
         "phpstan/phpstan": "1.10.67",
         "maglnet/composer-require-checker": "^2.0 || ^3.0",
         "phpro/grumphp-shim": "^0.22.0 || ^1.1"
